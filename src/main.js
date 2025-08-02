@@ -44,14 +44,15 @@ async function handleSearch(e) {
   currentPage = 1;
   hideLoadMoreButton();
   hideEndMessage();
+
+  clearGallery();
   showLoader();
 
   try {
     const data = await getImagesByQuery(currentQuery, currentPage);
     totalHits = data.totalHits;
-    clearGallery();
 
-    if (!data.hits.length) {
+    if (data.hits.length === 0) {
       iziToast.error({
         title: 'Error',
         message: 'No images found. Please try another query!',
@@ -113,10 +114,11 @@ function isEndOfResults() {
 }
 
 function smoothScroll() {
-  const { height: cardHeight } = document
-    .querySelector('.gallery')
-    .firstElementChild.getBoundingClientRect();
+  const galleryElement = document.querySelector('.gallery');
+  if (!galleryElement.firstElementChild) return; // Захист від null
 
+  const { height: cardHeight } =
+    galleryElement.firstElementChild.getBoundingClientRect();
   window.scrollBy({
     top: cardHeight * 2,
     behavior: 'smooth',
@@ -127,7 +129,7 @@ function handleError(error) {
   console.error('Error:', error);
   iziToast.error({
     title: 'Error',
-    message: 'Something went wrong. Please try again later.',
+    message: 'Failed to load images. Please try again later.', // Уточнено текст
     position: 'topRight',
   });
 }

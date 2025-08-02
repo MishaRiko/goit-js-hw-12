@@ -12,11 +12,14 @@ export function initLightbox() {
 }
 
 export function refreshLightbox() {
-  lightbox.refresh();
+  if (lightbox) lightbox.refresh();
+  else initLightbox();
 }
 
 export function createGallery(images) {
   const gallery = document.querySelector('.gallery'); // Селектор тут
+
+  gallery.innerHTML = '';
   const markup = images
     .map(
       image => `
@@ -36,6 +39,7 @@ export function createGallery(images) {
     .join('');
 
   gallery.insertAdjacentHTML('beforeend', markup);
+  refreshLightbox();
 }
 
 export function clearGallery() {
