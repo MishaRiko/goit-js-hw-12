@@ -384,20 +384,20 @@ div[data-id='prog-crak-erh'] {
 }
 
 /* Стилі для форми пошуку */
-.search-form {
+.form {
   display: flex;
   justify-content: center;
   margin: 20px 0;
 }
 
-.search-form input {
+.form input {
   padding: 10px 15px;
   border: 1px solid #ccc;
   border-radius: 4px 0 0 4px;
   width: 300px;
 }
 
-.search-form button {
+.form button {
   padding: 10px 20px;
   background-color: #ff3d00;
   color: white;
@@ -406,6 +406,6 @@ div[data-id='prog-crak-erh'] {
   cursor: pointer;
 }
 
-.search-form button:hover {
+.form button:hover {
   background-color: #e63900;
 }

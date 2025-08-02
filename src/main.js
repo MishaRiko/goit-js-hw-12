@@ -15,7 +15,7 @@ import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
 // Ініціалізація
-const form = document.querySelector('.search-form');
+const form = document.querySelector('.form');
 const loadMoreBtn = document.querySelector('.load-more');
 let currentPage = 1;
 let currentQuery = '';
